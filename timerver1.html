@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .container {
+      text-align: center;
+      font-size: 5rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container"></div>
+
+
+
+  <script>
+    const container = document.querySelector('.container')
+
+    function funTimer() {
+      let counter = 0
+      let min = 0
+
+
+
+
+      const interval = setInterval(() => {
+document.removeEventListener('click', funTimer)
+
+if(counter === 10) {
+  counter = 0
+  min++
+}
+
+        container.innerHTML = `${min}:${counter.toString().padStart(2, '0')}`
+
+
+document.addEventListener('click', () => { 
+clearInterval(interval)
+counter=0
+min=0
+
+document.addEventListener('click', funTimer)
+
+})
+counter++
+
+
+      }, 1000)
+
+
+
+
+
+
+
+    }
+
+
+
+
+    document.addEventListener('click', funTimer)
+
+
+
+  </script>
+</body>
+
+</html>
