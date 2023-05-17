@@ -41,41 +41,52 @@
                 this.second = 0
                 this.min = 0
                 this.boolean = true
-this.pause = ''
-this.interval
+                this.paused = ''
+                this.interval
 
-this.pauseStart.addEventListener('click', this.count.bind(this))
+                this.pauseStart.addEventListener('click', this.toggle.bind(this))
 
 
 
             }
 
-            count() {
 
-                if (this.boolean === false) {
-                    console.log('dza')
-this.boolean = true
-console.log(this.boolean)
-                    return clearInterval(this.interval)
+
+            toggle() {
+                this.paused = this.pauseStart.innerText
+                this.pauseStart.innerText = this.paused === 'Start' ? 'Pause' : 'Start'
+                if (this.boolean) {
+                    this.start()
+                } else {
+                    this.pause()
                 }
 
 
+            }
 
-                this.pause = this.pauseStart.innerText
 
-this.pauseStart.innerText = this.pause === 'Start'?'Pause':'Start'
 
+            pause() {
+                
+                this.boolean = true
+
+                clearInterval(this.interval)
+            }
+
+
+
+
+
+            start() {
+                this.boolean = false
+
+                
+
+                
 
                 if (this.boolean === true) {
                     this.boolean = false
-               
-               
-               
                 }
-
-
-
-
                 this.interval = setInterval(() => {
                     this.second++
                     if (this.second === 60) {
@@ -84,12 +95,6 @@ this.pauseStart.innerText = this.pause === 'Start'?'Pause':'Start'
                     }
                     time.innerText = this.min + `:` + this.second.toString().padStart(2, '0')
                 }, 1000)
-
-
-
-
-
-
             }
 
 
