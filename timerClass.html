@@ -32,16 +32,22 @@
 
     <script>
         const time = document.querySelector('.timer')
-        const button = document.querySelector('.start')
+        const pauseStart = document.querySelector('.start')
 
 
         class Timer {
-            constructor() {
+            constructor(pauseStart) {
+                this.pauseStart = pauseStart
                 this.second = 0
                 this.min = 0
                 this.boolean = true
 this.pause = ''
 this.interval
+
+this.pauseStart.addEventListener('click', this.count.bind(this))
+
+
+
             }
 
             count() {
@@ -55,9 +61,9 @@ console.log(this.boolean)
 
 
 
-                this.pause = button.innerText
+                this.pause = this.pauseStart.innerText
 
-button.innerText = this.pause === 'Start'?'Pause':'Start'
+this.pauseStart.innerText = this.pause === 'Start'?'Pause':'Start'
 
 
                 if (this.boolean === true) {
@@ -92,14 +98,10 @@ button.innerText = this.pause === 'Start'?'Pause':'Start'
 
         }
 
-        const counter = new Timer()
+        const timer = new Timer(pauseStart)
 
 
 
-
-        button.addEventListener('click', () => {
-            counter.count()
-        })
 
 
 
